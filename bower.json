@@ -1,0 +1,30 @@
+{
+  "name": "brunch-with-hobbits",
+  "version": "1.0.0",
+  "authors": [
+    "Scott Drake"
+  ],
+  "description": "Mithril with CoffeeScript and Stylus",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "brunch",
+    "mithril",
+    "coffeescript",
+    "stylus"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "doc-ready": "~1.0.4",
+    "mithril": "~0.1.30"
+  }
+}

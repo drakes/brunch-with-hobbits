@@ -1,0 +1,23 @@
+{
+  "name": "your-app",
+  "version": "1.0.0",
+  "description": "Description",
+  "dependencies": {
+    "coffee-script": "~1.9.1",
+    "coffee-script-brunch": "~1.8.1",
+    "coffeelint-brunch": "~1.7.0",
+    "css-brunch": "~1.7.0",
+    "javascript-brunch": "~1.7.1",
+    "mocha-phantomjs": "~3.5.3",
+    "node-notifier": "~4.1.2",
+    "phantomjs": "~1.9.16",
+    "post-brunch": "https://github.com/marcinbunsch/post-brunch/tarball/master",
+    "stylus-brunch": "~1.8.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+		"start": "brunch watch --server",
+    "test": "echo \"Use: brunch watch --server\" && exit 1"
+  },
+  "author": "Your Name"
+}

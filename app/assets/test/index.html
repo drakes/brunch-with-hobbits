@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Brunch with Hobbits: Tests</title>
+		<link rel="stylesheet" href="/stylesheets/vendor.css" />
+		<link rel="stylesheet" href="/stylesheets/app.css" />
+		<link rel="stylesheet" href="/test/stylesheets/vendor.css" />
+		<script src="/javascripts/vendor.js"></script>
+		<script src="/javascripts/app.js"></script>
+		<script src="/test/javascripts/vendor.js"></script>
+		<script>
+			window.mocha.setup(
+			{
+				ui: 'bdd',
+				bail: true
+			});
+			window.expect = chai.expect;
+
+			function initializeTestModules()
+			{
+				var registeredModules = window.require.list();
+				var testModules = registeredModules.filter(function(name)
+				{
+					return /^test[\\/]/.test(name);
+				});
+				testModules.forEach(function(moduleName, index)
+				{
+					// pass only the module name to require, to prevent index being seen as the loaderPath
+					require(moduleName);
+				});
+			}
+
+			docReady(function()
+			{
+				initializeTestModules();
+				if (window.mochaPhantomJS)
+				{
+					window.mochaPhantomJS.run();
+				}
+				else
+				{
+					window.mocha.run();
+				}
+			});
+		</script>
+		<!-- test scripts must come after loading mocha/chai/sinon -->
+		<script src="/test/javascripts/test.js"></script>
+	</head>
+	<body>
+		<div id="mocha"></div>
+		<div id="mocha-app-body"></div>
+	</body>
+</html>
