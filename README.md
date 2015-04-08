@@ -3,17 +3,17 @@ An app skeleton for [Brunch](http://brunch.io/).
 
 ## Overview
 Brunch builds your app (compiles and concatenates scripts, etc.) and is fast at doing it.
-Brunch with Hobbits seeds your app structure, including a great JavaScript framework, Mithril. It also provides a tiny example app to illustrate how things are hooked together, including tests.
+Brunch with Hobbits seeds your app structure, including a great JavaScript framework: Mithril. It also provides a tiny example app to illustrate how things are hooked together, including tests.
 
 ## Features
 * [Mithril](http://lhorie.github.io/mithril/)
 * [CoffeeScript](http://coffeescript.org/)
 * [Stylus](http://learnboost.github.io/stylus/)
 * Automated tests, with notifications, using:
-** [Mocha](http://mochajs.org/)
-** [Chai](http://chaijs.com/)
-** [Sinon](http://sinonjs.org/)
-** [Mocha-PhantomJS](https://github.com/metaskills/mocha-phantomjs)
+  * [Mocha](http://mochajs.org/)
+  * [Chai](http://chaijs.com/)
+  * [Sinon](http://sinonjs.org/)
+  * [Mocha-PhantomJS](https://github.com/metaskills/mocha-phantomjs)
 
 ## Getting started
 ### Requirements
