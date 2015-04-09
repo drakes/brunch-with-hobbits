@@ -2,7 +2,8 @@
   "name": "your-app",
   "version": "1.0.0",
   "description": "Description",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "coffee-script": "~1.9.1",
     "coffee-script-brunch": "~1.8.1",
     "coffeelint-brunch": "~1.7.0",
@@ -14,7 +15,6 @@
     "post-brunch": "https://github.com/marcinbunsch/post-brunch/tarball/master",
     "stylus-brunch": "~1.8.1"
   },
-  "devDependencies": {},
   "scripts": {
 		"start": "brunch watch --server",
     "test": "echo \"Use: brunch watch --server\" && exit 1"

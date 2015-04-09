@@ -1,18 +1,15 @@
 {
-  "name": "brunch-with-hobbits",
+  "name": "your-app",
   "version": "1.0.0",
   "authors": [
-    "Scott Drake"
+    "Your Name"
   ],
-  "description": "Mithril with CoffeeScript and Stylus",
+  "description": "Description",
   "moduleType": [
     "node"
   ],
   "keywords": [
-    "brunch",
     "mithril",
-    "coffeescript",
-    "stylus"
   ],
   "license": "MIT",
   "private": true,
