@@ -9,6 +9,7 @@ Brunch with Hobbits seeds your app structure, including a great JavaScript frame
 * [Mithril](http://lhorie.github.io/mithril/)
 * [CoffeeScript](http://coffeescript.org/)
 * [Stylus](http://learnboost.github.io/stylus/)
+* [Styledocco](http://jacobrask.github.io/styledocco/)
 * Automated tests, with notifications, using:
   * [Mocha](http://mochajs.org/)
   * [Chai](http://chaijs.com/)
@@ -21,10 +22,10 @@ Brunch with Hobbits seeds your app structure, including a great JavaScript frame
 * [brunch](http://brunch.io/)
 * [bower](http://bower.io/)
 
-Additionally, mocha-phantomjs and phantomjs should be installed globally to make their executables available (for automated testing on changes):
+Additionally, mocha-phantomjs, phantomjs, stylus, and styledocco should be installed globally to make their executables available (for tests and style guide):
 
 ```
-npm install -g mocha-phantomjs phantomjs
+npm install -g mocha-phantomjs phantomjs stylus styledocco
 ```
 
 ### Create a project with this skeleton

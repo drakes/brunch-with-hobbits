@@ -6,6 +6,14 @@ icon =
 	pass: path.join __dirname, 'pass.png'
 	fail: path.join __dirname, 'fail.png'
 
+postBrunchTasks = ->
+	buildStyleGuide()
+	runTests()
+
+buildStyleGuide = ->
+	command = 'styledocco --out public/style-guide --preprocessor "stylus -p" app/stylesheets'
+	exec command
+
 runTests = ->
 	# assumes default port
 	command = 'mocha-phantomjs --reporter progress http://localhost:3333/test/'
@@ -73,7 +81,7 @@ exports.config =
 		'warn'
 	]
 	plugins:
-		postBrunch: runTests
+		postBrunch: postBrunchTasks
 		coffeelint:
 			pattern: ///^
 				(
