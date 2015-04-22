@@ -7,7 +7,7 @@ Brunch with Hobbits seeds your app structure, including a great JavaScript frame
 
 ## Features
 * [Mithril](http://lhorie.github.io/mithril/)
-* [CoffeeScript](http://coffeescript.org/)
+* [CoffeeScript](http://coffeescript.org/), with [CoffeeLint](http://www.coffeelint.org/)
 * [Stylus](http://learnboost.github.io/stylus/)
 * [Styledocco](http://jacobrask.github.io/styledocco/)
 * Automated tests, with notifications, using:
