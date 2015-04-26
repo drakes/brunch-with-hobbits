@@ -8,12 +8,12 @@ class ToDoListModel
 		@input = m.prop ''
 
 	# by convention methods and properties starting with `_` are considered private
-	_inputIsValid: ->
+	_inputIsValid: =>
 		!!@input().match /\S/
 
 	# we don't want `_items` to be manipulated directly
 	# but provide an accessor for reading
-	items: ->
+	items: =>
 		@_items
 
 	addItem: =>

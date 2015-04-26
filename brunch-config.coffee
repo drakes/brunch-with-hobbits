@@ -117,6 +117,7 @@ exports.config =
 					limitComments: yes
 				missing_fat_arrows:
 					level: 'warn'
+					is_strict: yes
 				newlines_after_classes:
 					level: 'warn'
 					value: 2
