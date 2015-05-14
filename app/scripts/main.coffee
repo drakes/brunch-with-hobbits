@@ -15,6 +15,6 @@ bootstrapList = ->
 
 docReady ->
 	listContainer = document.getElementById 'listContainer'
-	m.module listContainer,
+	m.mount listContainer,
 		controller: bootstrapList()
 		view: toDoListView
