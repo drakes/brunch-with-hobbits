@@ -15,7 +15,10 @@
 				bail: true
 			});
 			window.expect = chai.expect;
-
+		</script>
+		<!-- test scripts must come after loading mocha/chai/sinon -->
+		<script src="/test/javascripts/test.js"></script>
+		<script>
 			function initializeTestModules()
 			{
 				var registeredModules = window.require.list();
@@ -30,7 +33,7 @@
 				});
 			}
 
-			docReady(function()
+			(function()
 			{
 				initializeTestModules();
 				if (window.mochaPhantomJS)
@@ -41,10 +44,8 @@
 				{
 					window.mocha.run();
 				}
-			});
+			})();
 		</script>
-		<!-- test scripts must come after loading mocha/chai/sinon -->
-		<script src="/test/javascripts/test.js"></script>
 	</head>
 	<body>
 		<div id="mocha"></div>

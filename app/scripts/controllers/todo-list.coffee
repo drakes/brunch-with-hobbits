@@ -2,14 +2,13 @@ ToDoListModel = require 'models/todo-list'
 
 ENTER_KEY = 13
 
-class ToDoListController
-	constructor: (itemData) ->
-		@vm = new ToDoListModel itemData
+module.exports =
+	class ToDoListController
+		constructor: ({initialListItems}) ->
+			@vm = new ToDoListModel initialListItems
 
-	keyPressed: (event) =>
-		@vm.input event.target.value
-		# browser compatibility
-		key = event.which or event.keyCode or event.charCode
-		@vm.addItem() if key is ENTER_KEY
-
-module.exports = ToDoListController
+		keyPressed: (event) =>
+			@vm.input event.target.value
+			# browser compatibility
+			key = event.which or event.keyCode or event.charCode
+			@vm.addItem() if key is ENTER_KEY

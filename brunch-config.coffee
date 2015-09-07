@@ -78,7 +78,6 @@ exports.config =
 				///, '')
 	notifications: [
 		'error'
-		'warn'
 	]
 	plugins:
 		postBrunch: postBrunchTasks
