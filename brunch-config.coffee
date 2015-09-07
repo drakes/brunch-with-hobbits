@@ -11,7 +11,13 @@ postBrunchTasks = ->
 	runTests()
 
 buildStyleGuide = ->
-	command = 'styledocco --out public/style-guide --preprocessor "stylus -p" app/stylesheets'
+	# include compiled stylesheets so the guide can be used to create accurate styles
+	# in isolation from the rest of the frontend
+	command = "styledocco
+		--out public/style-guide
+		--include public/stylesheets/app.css
+		--include public/stylesheets/vendor.css
+		--preprocessor 'stylus -p' app/stylesheets"
 	exec command
 
 runTests = ->
@@ -34,40 +40,45 @@ notifyTestResults = (error, stdout) ->
 	else if stdout
 		console.log "test(s) failed: #{stdout}"
 
+appPattern = /^app/
+testPattern = /^test/
+# block regexes (http://coffeescript.org/#regexes)
+vendorScriptsPattern = ///^ # all matches must start at beginning of string
+	(
+		vendor
+		[\\/] # path separator
+		(?!test) # exclude vendor/test scripts
+		|bower_components # or instead of all that, bower dependencies
+	)
+	///
+vendorStylesheetsPattern = ///^
+	(
+		vendor
+		[\\/] # path separator
+		(?!test) # exclude vendor/test stylesheets
+		|bower_components # or instead of all that, bower dependencies
+	)
+	///
+vendorTestPattern = ///^
+	vendor
+	[\\/] # path separator
+	test
+	///
+
 exports.config =
 	files:
 		javascripts:
 			joinTo:
-				'javascripts/app.js': /^app/
-				# block regexes (http://coffeescript.org/#regexes)
-				'javascripts/vendor.js': ///^ # all matches must start at beginning of string
-					(
-						vendor
-						[\\/] # path separator
-						(?!test) # exclude vendor/test scripts
-						|bower_components # or instead of all that, bower dependencies
-					)
-					///
-				'test/javascripts/test.js': /^test/
-				'test/javascripts/vendor.js': ///^
-					vendor
-					[\\/] # path separator
-					test
-					///
+				'javascripts/app.js': appPattern
+				'javascripts/vendor.js': vendorScriptsPattern
+				'test/javascripts/test.js': testPattern
+				'test/javascripts/vendor.js': vendorTestPattern
 		stylesheets:
 			joinTo:
-				'stylesheets/app.css': /^app/
-				'stylesheets/vendor.css': ///^
-					vendor
-					[\\/] # path separator
-					(?!test) # exclude vendor/test stylesheets
-					///
-				'test/stylesheets/test.css': /^test/
-				'test/stylesheets/vendor.css': ///^
-					vendor
-					[\\/] # path separator
-					test
-					///
+				'stylesheets/app.css': appPattern
+				'stylesheets/vendor.css': vendorStylesheetsPattern
+				'test/stylesheets/test.css': testPattern
+				'test/stylesheets/vendor.css': vendorTestPattern
 	modules:
 		nameCleaner: (path) ->
 			path.replace(///^
@@ -116,7 +127,6 @@ exports.config =
 					limitComments: yes
 				missing_fat_arrows:
 					level: 'warn'
-					is_strict: yes
 				newlines_after_classes:
 					level: 'warn'
 					value: 2
@@ -136,3 +146,8 @@ exports.config =
 				spacing_after_comma:
 					level: 'warn'
 	sourceMaps: no
+	overrides:
+		production:
+			plugins:
+				# override postBrunch tasks, they're considered development-time only (e.g. testing and styleguide)
+				postBrunch: ->
