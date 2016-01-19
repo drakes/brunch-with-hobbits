@@ -25,5 +25,5 @@ docReady ->
 		controller: -> appController
 		view: appView
 
-	body = document.getElementsByTagName('body')[0]
-	m.mount body, App
+	mountPoint = document.getElementById 'listContainer'
+	m.mount mountPoint, App

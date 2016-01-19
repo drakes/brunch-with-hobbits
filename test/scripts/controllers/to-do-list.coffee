@@ -5,15 +5,17 @@ mockPubSub = require '../mocks/pub-sub'
 describe 'ToDoListController', ->
 	toDoListController = null
 
+	mockItems = ['an item']
+
 	mockModels =
 		toDos:
-			all: ->
-				['an item']
+			allKeys: ->
+				index + 1 for item, index in mockItems
 
 	beforeEach ->
 		toDoListController = new ToDoListController models: mockModels, pubSub: mockPubSub
 
-	it 'provides to-do items', ->
-		items = toDoListController.items()
-		expect(items).to.be.an.instanceof Array
-		expect(items).not.to.be.empty
+	it 'provides item keys', ->
+		keys = toDoListController.itemKeys()
+		expect(keys).to.be.an.instanceof Array
+		expect(keys).to.have.length mockItems.length

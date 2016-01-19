@@ -1,27 +1,23 @@
+wrapConstructor = require 'wrap-constructor'
+
 ToDoList =
 	controller: require 'controllers/to-do-list'
 	view: require 'views/to-do-list'
 
-Header =
-	controller: require 'controllers/header'
-	view: require 'views/headerView'
-
-Footer =
-	controller: require 'controllers/footer'
-	view: require 'views/footer'
-
 module.exports =
 	class AppController
-		constructor: ->
-			# order matters for layout
-			orderedComponents = [
-				Header
-				ToDoList
-				Footer
-			]
+		constructor: (@commonArgs) ->
+			# order can matter for layout
+			firstComponents = []
 			# layout unaffected by ordering (e.g. flexbox, absolute positioning)
-			orderIndependentComponents = []
-			@_components = orderedComponents.concat orderIndependentComponents
+			orderIndependentComponents = [
+				ToDoList
+			]
+			lastComponents = []
+			orderedComponents = firstComponents.concat orderIndependentComponents, lastComponents
+			@_components = for component in orderedComponents
+				component.controller = wrapConstructor component.controller
+				component
 
 		components: =>
 			@_components

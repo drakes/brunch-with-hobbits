@@ -12,8 +12,8 @@
 
 module.exports =
 	wrapConstructor = (constructor) ->
-		# coffeeLint: disable=missing_fat_arrows
-		C - (args) ->
+		# coffeelint: disable=missing_fat_arrows
+		C = (args) ->
 			constructor.apply @, args
 		# coffeelint: enable=missing_fat_arrows
 

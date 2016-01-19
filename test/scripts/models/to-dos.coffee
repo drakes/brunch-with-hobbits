@@ -14,7 +14,7 @@ describe 'ToDosModel', ->
 			toDosModel.disconnectHandlers()
 
 		it 'has zero items', ->
-			items = toDosModel.all()
+			items = toDosModel.allKeys()
 			expect(items).to.be.empty
 
 	describe 'with some items', ->
@@ -35,18 +35,16 @@ describe 'ToDosModel', ->
 		# leaving only assertions and querying methods for values in `it` blocks
 		# ideally a single assertion per `it`
 		it 'has the correct number of items', ->
-			items = toDosModel.all()
-			expect(items).to.have.length itemData.length
+			keys = toDosModel.allKeys()
+			expect(keys).to.have.length itemData.length
 
 		it 'provides an item\'s "done" state', ->
-			firstItem = toDosModel.all()[0]
-			firstKey = firstItem.key
+			firstKey = toDosModel.allKeys()[0]
 			isDone = toDosModel.isItemDone key: firstKey
 			expect(isDone).to.be.false
 
 		it 'provides an item\'s text', ->
-			firstItem = toDosModel.all()[0]
-			firstKey = firstItem.key
+			firstKey = toDosModel.allKeys()[0]
 			text = toDosModel.textOf key: firstKey
 			expect(text).to.equal itemData[0]
 
@@ -57,26 +55,27 @@ describe 'ToDosModel', ->
 				mockPubSub.publish 'toDos:add', text: newItemText
 
 			it 'has the new item', ->
-				items = toDosModel.all()
-				newItemPresent = yes for item in items when item.text is newItemText
+				keys = toDosModel.allKeys()
+				for key in keys when toDosModel.textOf(key: key) is newItemText
+					newItemPresent = yes
 				expect(newItemPresent).to.be.true
 
 			it 'has an additional item', ->
-				items = toDosModel.all()
-				expect(items).to.have.length itemData.length + 1
+				keys = toDosModel.allKeys()
+				expect(keys).to.have.length itemData.length + 1
 
 		describe 'trying to add an empty item', ->
 			beforeEach ->
 				mockPubSub.publish 'toDos:add', text: ''
 
 			it 'has the original number of items', ->
-				items = toDosModel.all()
-				expect(items).to.have.length itemData.length
+				keys = toDosModel.allKeys()
+				expect(keys).to.have.length itemData.length
 
 		describe 'trying to add whitespace as an item', ->
 			beforeEach ->
 				mockPubSub.publish 'toDos:add', text: ' '
 
 			it 'has the original number of items', ->
-				items = toDosModel.all()
-				expect(items).to.have.length itemData.length
+				keys = toDosModel.allKeys()
+				expect(keys).to.have.length itemData.length

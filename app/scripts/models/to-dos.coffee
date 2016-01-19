@@ -1,7 +1,13 @@
+BaseModel = require 'models/base'
+
 module.exports =
-	class ToDosModel
+	class ToDosModel extends BaseModel
 		constructor: ({items, pubSub}) ->
-			@_pubSub = pubSub
+			super pubSub: pubSub
+			@_pubSubHandlers =
+				'toDos:add': @addItem
+				'toDos:toggle': @toggleItem
+
 			@_currentKey = 1
 			initialListItems = items or [
 				'Write tests'
@@ -19,19 +25,11 @@ module.exports =
 				done: no
 				text: text
 
-		_isValid: (text) =>
+		_isValid: (text) ->
 			!!text.match /\S/
 
 		_findItem: (key) =>
 			return item for item in @_toDos when item.key is key
-
-		connectHandlers: =>
-			@_pubSub.subscribe 'toDos:add', @addItem
-			@_pubSub.subscribe 'toDos:toggle', @toggleItem
-
-		disconnectHandlers: =>
-			@_pubSub.unsubscribe 'toDos:add', @addItem
-			@_pubSub.unsubscribe 'toDos:toggle', @toggleItem
 
 		addItem: ({text}) =>
 			if @_isValid text
@@ -43,8 +41,8 @@ module.exports =
 			item.done = not item.done
 			@_pubSub.publish 'modelUpdated:toDos'
 
-		all: =>
-			@_toDos
+		allKeys: =>
+			item.key for item in @_toDos
 
 		isItemDone: ({key}) =>
 			item = @_findItem key

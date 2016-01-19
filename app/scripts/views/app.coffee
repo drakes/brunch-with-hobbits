@@ -2,4 +2,4 @@ m = window.m
 
 module.exports =
 	appView = (app, commonArgs) ->
-		m 'div', (m.component component, commonArgs for component in app.components())
+		m 'div', (m.component component, app.commonArgs for component in app.components())

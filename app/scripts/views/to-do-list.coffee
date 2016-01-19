@@ -10,11 +10,11 @@ ToDo.controller = wrapConstructor ToDo.controller
 module.exports =
 	toDoListView = (toDoList, commonArgs) ->
 		m 'div', [
-			m 'ul', (m.component ToDo, toDo, commonArgs for toDo in toDoList.items())
+			m 'ul', (m.component ToDo, key: key, commonArgs for key in toDoList.itemKeys())
 			m 'p', [
 				m 'input',
 				{
-					onchange: m.withAttr 'value', toDoList.input
+					oninput: m.withAttr 'value', toDoList.input
 					onkeypress: toDoList.keyPressed
 					value: toDoList.input()
 				}
