@@ -16,6 +16,12 @@ Brunch with Hobbits seeds your app structure, including a great JavaScript frame
   * [Sinon](http://sinonjs.org/)
   * [Mocha-PhantomJS](https://github.com/metaskills/mocha-phantomjs)
 
+## Applications
+Brunch with Hobbits hooks up a bunch of useful tools and provides opinionated defaults. If these choices work for you you'll find it an excellent starting point for building:
+* Stand-alone single-page applications
+* The frontend to go with any type of backend web application/server (Express, Rails, Django, ASP.NET, etc.; consider build steps to invoke `brunch build --production` and copy the contents of public/ to the appropriate assets directory)
+* Web views for cross-platform mobile apps (with Cordova, Xamarin, etc.)
+
 ## Getting started
 ### Requirements
 * [node](https://nodejs.org/)
