@@ -21,7 +21,7 @@
     "tests"
   ],
   "dependencies": {
-		"doc-ready": "~1.0.4",
-    "mithril": "~0.2.1"
+    "doc-ready": "~1.0.4",
+    "mithril": "~0.2.3"
   }
 }
