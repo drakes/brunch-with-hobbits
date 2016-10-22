@@ -1,11 +1,8 @@
-m = window.m
-
-wrapConstructor = require 'wrap-constructor'
+m = require 'mithril'
 
 ToDo =
 	controller: require 'controllers/to-do'
 	view: require 'views/to-do'
-ToDo.controller = wrapConstructor ToDo.controller
 
 module.exports =
 	toDoListView = (toDoList, commonArgs) ->

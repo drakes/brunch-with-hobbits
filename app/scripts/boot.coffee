@@ -1,6 +1,7 @@
-m = window.m
-docReady = window.docReady
 pubSub = window.amplify
+
+docReady = require 'doc-ready'
+m = require 'mithril'
 
 AppController = require 'controllers/app'
 appView = require 'views/app'

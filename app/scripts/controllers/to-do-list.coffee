@@ -1,4 +1,4 @@
-m = window.m
+m = require 'mithril'
 
 ENTER_KEY = 13
 

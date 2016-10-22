@@ -1,5 +1,3 @@
-wrapConstructor = require 'wrap-constructor'
-
 ToDoList =
 	controller: require 'controllers/to-do-list'
 	view: require 'views/to-do-list'
@@ -15,9 +13,7 @@ module.exports =
 			]
 			lastComponents = []
 			orderedComponents = firstComponents.concat orderIndependentComponents, lastComponents
-			@_components = for component in orderedComponents
-				component.controller = wrapConstructor component.controller
-				component
+			@_components = orderedComponents
 
 		components: =>
 			@_components

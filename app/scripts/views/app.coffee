@@ -1,4 +1,4 @@
-m = window.m
+m = require 'mithril'
 
 module.exports =
 	appView = (app, commonArgs) ->

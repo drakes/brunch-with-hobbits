@@ -1,8 +1,9 @@
-m = window.m
+m = require 'mithril'
+classNames = require 'classnames'
 
 module.exports =
 	toDoView = (toDo) ->
-		m 'li', {class: if toDo.isDone() then 'done' else ''},
+		m 'li', {class: classNames done: toDo.isDone()},
 			m 'label', [
 				m 'input[type=checkbox]',
 				{
