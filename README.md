@@ -26,7 +26,6 @@ Brunch with Hobbits hooks up a bunch of useful tools and provides opinionated de
 ### Requirements
 * [node](https://nodejs.org/)
 * [brunch](http://brunch.io/)
-* [bower](http://bower.io/)
 
 Additionally, mocha-phantomjs, phantomjs, stylus, and styledocco should be installed globally to make their executables available (for tests and style guide):
 
