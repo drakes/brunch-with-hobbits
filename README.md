@@ -37,7 +37,7 @@ npm install -g mocha-phantomjs phantomjs stylus styledocco
 ### Create a project with this skeleton
 
 ```
-brunch new gh:drakes/brunch-with-hobbits [optional-output-dir]
+brunch new [optional-output-dir] -s gh:drakes/brunch-with-hobbits
 ```
 
 ### Build, run tests, and launch a server
