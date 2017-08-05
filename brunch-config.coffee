@@ -3,12 +3,16 @@ path = require 'path'
 
 autoprefixer = require 'autoprefixer'
 notifier = require 'node-notifier'
+pushserve = require 'pushserve'
 
 coffeelintOptions = require './coffeelint-options'
 
 icon =
 	pass: path.join __dirname, 'pass.png'
 	fail: path.join __dirname, 'fail.png'
+
+# assumes default port
+port = 3333
 
 postBrunchTasks = ->
 	buildStyleGuide()
@@ -25,12 +29,18 @@ buildStyleGuide = ->
 	exec command
 
 runTests = ->
-	# assumes default port
-	command = 'mocha-phantomjs --reporter progress http://localhost:3333/test/'
+	command = "phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js http://localhost:#{port}/test/ progress"
 	try
 		exec command, notifyTestResults
 	catch error
 		notifyTestResults {code: 1}, "error running tests: #{JSON.stringify error}"
+
+runCITests = ->
+	# assumes default port
+	command = "phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js http://localhost:#{port}/test/ xunit > test-results.xml"
+	server = pushserve {port, path: 'public'}, ->
+		exec command, ->
+			server.close()
 
 notifyTestResults = (error, stdout) ->
 	success = not error? or error.code is 0
@@ -91,7 +101,6 @@ exports.config =
 				scripts
 				[\\/] # path separator
 				///, '')
-	notifications: on
 	plugins:
 		postBrunch: postBrunchTasks
 		postcss:
@@ -113,3 +122,6 @@ exports.config =
 			plugins:
 				# override postBrunch tasks, they're considered development-time only (e.g. testing and styleguide)
 				postBrunch: ->
+		test:
+			plugins:
+				postBrunch: runCITests

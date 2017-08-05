@@ -16,11 +16,11 @@
     "coffeelint-brunch": "~2.0.0",
     "css-brunch": "~2.6.1",
     "javascript-brunch": "~2.0.0",
-    "mocha-phantomjs": "~4.1.0",
+    "mocha-phantomjs-core": "~2.1.1",
     "node-notifier": "~4.6.1",
-    "phantomjs-prebuilt": "~2.1.13",
     "post-brunch": "https://github.com/marcinbunsch/post-brunch/tarball/master",
     "postcss-brunch": "~2.0.3",
+    "pushserve": "~1.0.2",
     "styledocco": "~0.6.6",
     "stylus-brunch": "~2.7.2"
   },

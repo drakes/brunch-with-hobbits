@@ -14,7 +14,7 @@ Brunch with Hobbits seeds your app structure, including a great JavaScript frame
   * [Mocha](http://mochajs.org/)
   * [Chai](http://chaijs.com/)
   * [Sinon](http://sinonjs.org/)
-  * [Mocha-PhantomJS](https://github.com/metaskills/mocha-phantomjs)
+  * [PhantomJS](http://phantomjs.org/)
 
 ## Applications
 Brunch with Hobbits hooks up a bunch of useful tools and provides opinionated defaults. If these choices work for you you'll find it an excellent starting point for building:
@@ -27,10 +27,10 @@ Brunch with Hobbits hooks up a bunch of useful tools and provides opinionated de
 * [node](https://nodejs.org/)
 * [brunch](http://brunch.io/)
 
-Additionally, mocha-phantomjs, phantomjs, stylus, and styledocco should be installed globally to make their executables available (for tests and style guide):
+Additionally, phantomjs, stylus, and styledocco should be installed globally to make their executables available (for tests and style guide):
 
 ```
-npm install -g mocha-phantomjs phantomjs stylus styledocco
+npm install -g phantomjs-prebuilt stylus styledocco
 ```
 
 ### Create a project with this skeleton
