@@ -35,13 +35,6 @@ runTests = ->
 	catch error
 		notifyTestResults {code: 1}, "error running tests: #{JSON.stringify error}"
 
-runCITests = ->
-	# assumes default port
-	command = "phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js http://localhost:#{port}/test/ xunit > test-results.xml"
-	server = pushserve {port, path: 'public'}, ->
-		exec command, ->
-			server.close()
-
 notifyTestResults = (error, stdout) ->
 	success = not error? or error.code is 0
 	notifier.notify
@@ -122,6 +115,3 @@ exports.config =
 			plugins:
 				# override postBrunch tasks, they're considered development-time only (e.g. testing and styleguide)
 				postBrunch: ->
-		test:
-			plugins:
-				postBrunch: runCITests
