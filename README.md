@@ -25,12 +25,11 @@ Brunch with Hobbits hooks up a bunch of useful tools and provides opinionated de
 ## Getting started
 ### Requirements
 * [node](https://nodejs.org/)
-* [brunch](http://brunch.io/)
 
-Additionally, phantomjs, stylus, and styledocco should be installed globally to make their executables available (for tests and style guide):
+Install dependencies:
 
 ```
-npm install -g phantomjs-prebuilt stylus styledocco
+npm install
 ```
 
 ### Create a project with this skeleton
@@ -42,12 +41,14 @@ brunch new [optional-output-dir] -s gh:drakes/brunch-with-hobbits
 ### Build, run tests, and launch a server
 
 ```
-brunch watch --server
+npm start
 ```
 
 Editing changes should be picked up by brunch automatically in "watch" mode and recompiled, etc., including re-running tests on script changes.
 
 To view the app browse to: http://localhost:3333/
+
+To stop the server: ctrl+c
 
 ## License
 Brunch with Hobbits is © [Scott Drake](http://3dmdesign.com) and available under the [MIT license](http://opensource.org/licenses/MIT).

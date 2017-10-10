@@ -18,6 +18,7 @@
     "javascript-brunch": "~2.0.0",
     "mocha-phantomjs-core": "~2.1.1",
     "node-notifier": "~4.6.1",
+    "phantomjs-prebuilt": "~2.1.15",
     "post-brunch": "https://github.com/marcinbunsch/post-brunch/tarball/master",
     "postcss-brunch": "~2.0.3",
     "pushserve": "~1.0.2",
@@ -26,7 +27,7 @@
   },
   "scripts": {
     "start": "brunch watch --server",
-    "test": "echo \"Use: brunch watch --server\" && exit 1"
+    "test": "echo \"Use: npm start\" && exit 1"
   },
   "author": "Your Name"
 }
