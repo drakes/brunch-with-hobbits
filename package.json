@@ -10,10 +10,10 @@
   "devDependencies": {
     "autoprefixer": "~7.1.5",
     "brunch": "~2.10.11",
-    "coffee-script": "~1.11.1",
-    "coffee-script-brunch": "~2.0.0",
+    "coffee-script": "~1.12.7",
+    "coffee-script-brunch": "~2.10.2",
     "coffeelint": "~1.16.0",
-    "coffeelint-brunch": "~2.0.0",
+    "coffeelint-brunch": "~2.10.0",
     "mocha-phantomjs-core": "~2.1.1",
     "node-notifier": "~4.6.1",
     "phantomjs-prebuilt": "~2.1.15",
