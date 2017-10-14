@@ -8,22 +8,20 @@
     "mithril": "~0.2.5"
   },
   "devDependencies": {
-    "autoprefixer": "~6.5.1",
-    "brunch": "~2.8.2",
+    "autoprefixer": "~7.1.5",
+    "brunch": "~2.10.11",
     "coffee-script": "~1.11.1",
     "coffee-script-brunch": "~2.0.0",
     "coffeelint": "~1.16.0",
     "coffeelint-brunch": "~2.0.0",
-    "css-brunch": "~2.6.1",
-    "javascript-brunch": "~2.0.0",
     "mocha-phantomjs-core": "~2.1.1",
     "node-notifier": "~4.6.1",
     "phantomjs-prebuilt": "~2.1.15",
     "post-brunch": "https://github.com/marcinbunsch/post-brunch/tarball/master",
-    "postcss-brunch": "~2.0.3",
+    "postcss-brunch": "~2.1.0",
     "pushserve": "~1.0.2",
     "styledocco": "~0.6.6",
-    "stylus-brunch": "~2.7.2"
+    "stylus-brunch": "~2.10.0"
   },
   "scripts": {
     "start": "brunch watch --server",
