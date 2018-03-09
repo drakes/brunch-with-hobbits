@@ -2,13 +2,16 @@ m = require 'mithril'
 classNames = require 'classnames'
 
 module.exports =
-	toDoView = (toDo) ->
-		m 'li', {class: classNames done: toDo.isDone()},
+	toDoView = (vnode) ->
+		toDo = vnode.state
+		done = toDo.isDone()
+
+		m 'li', {class: classNames done: done},
 			m 'label', [
 				m 'input[type=checkbox]',
 				{
-					checked: toDo.isDone()
-					onchange: m.withAttr 'checked', toDo.toggleDone
+					checked: done
+					onchange: toDo.toggleDone
 				}
 				toDo.text()
 			]

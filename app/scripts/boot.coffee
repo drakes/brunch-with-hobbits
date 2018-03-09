@@ -1,30 +1,8 @@
-pubSub = window.amplify
-
 docReady = require 'doc-ready'
 m = require 'mithril'
 
-AppController = require 'controllers/app'
-appView = require 'views/app'
-
-modelClasses =
-	toDos: require 'models/to-dos'
-
-instantiateModels = ->
-	models = {}
-	for type, Model of modelClasses
-		model = new Model pubSub: pubSub
-		model.connectHandlers()
-		models[type] = model
-	models
+App = require 'controllers/app'
 
 docReady ->
-	models = instantiateModels()
-	# models are passed down to permit easy querying
-	# but receive "commands" only through action events, not method calls
-	appController = new AppController models: models, pubSub: pubSub
-	App =
-		controller: -> appController
-		view: appView
-
 	mountPoint = document.getElementById 'listContainer'
 	m.mount mountPoint, App

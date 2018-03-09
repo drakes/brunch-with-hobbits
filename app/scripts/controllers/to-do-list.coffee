@@ -1,24 +1,32 @@
-m = require 'mithril'
+toDoListView = require 'views/to-do-list'
 
 ENTER_KEY = 13
 
 module.exports =
-	class ToDoListController
-		constructor: ({models, pubSub}) ->
+	class ToDoList
+		constructor: (vnode) ->
+			# vnode.state currently undefined
+
+		oninit: (vnode) =>
+			{models, pubSub} = vnode.attrs.data
+			# "dependency injection", passed in to permit mocking in tests
+			@_models = models
 			@_toDos = models.toDos
 			@_pubSub = pubSub
 
-			# view state
-			@input = m.prop ''
+			# view state (more transitory than model state)
+			@_input = ''
 
-			@_connectHandlers()
+		view: toDoListView
 
-		_connectHandlers: =>
-			@_pubSub.subscribe 'modelUpdated:toDos', @redraw
+		data: =>
+			models: @_models
+			pubSub: @_pubSub
 
-		redraw: ->
-			m.startComputation()
-			m.endComputation()
+		input: (value) =>
+			return @_input if value is undefined
+
+			@_input = value
 
 		keyPressed: (event) =>
 			# browser compatibility

@@ -19,6 +19,25 @@ module.exports =
 			@_toDos = []
 			@_addItem item for item in initialListItems
 
+		addItem: ({text}) =>
+			if @_isValid text
+				@_addItem text
+
+		toggleItem: ({key}) =>
+			item = @_findItem key
+			item.done = not item.done
+
+		allKeys: =>
+			item.key for item in @_toDos
+
+		isItemDone: ({key}) =>
+			item = @_findItem key
+			item.done
+
+		textOf: ({key}) =>
+			item = @_findItem key
+			item.text
+
 		_addItem: (text) =>
 			@_toDos.push
 				key: @_currentKey++
@@ -31,23 +50,3 @@ module.exports =
 		_findItem: (key) =>
 			return item for item in @_toDos when item.key is key
 
-		addItem: ({text}) =>
-			if @_isValid text
-				@_addItem text
-				@_pubSub.publish 'modelUpdated:toDos'
-
-		toggleItem: ({key}) =>
-			item = @_findItem key
-			item.done = not item.done
-			@_pubSub.publish 'modelUpdated:toDos'
-
-		allKeys: =>
-			item.key for item in @_toDos
-
-		isItemDone: ({key}) =>
-			item = @_findItem key
-			item.done
-
-		textOf: ({key}) =>
-			item = @_findItem key
-			item.text

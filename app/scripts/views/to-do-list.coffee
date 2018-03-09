@@ -1,13 +1,14 @@
 m = require 'mithril'
 
-ToDo =
-	controller: require 'controllers/to-do'
-	view: require 'views/to-do'
+ToDo = require 'controllers/to-do'
 
 module.exports =
-	toDoListView = (toDoList, commonArgs) ->
+	toDoListView = (vnode) ->
+		toDoList = vnode.state
+		data = toDoList.data()
+
 		m 'div', [
-			m 'ul', (m.component ToDo, key: key, commonArgs for key in toDoList.itemKeys())
+			m 'ul', (m ToDo, {key, data} for key in toDoList.itemKeys())
 			m 'p', [
 				m 'input',
 				{

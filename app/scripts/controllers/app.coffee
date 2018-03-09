@@ -1,19 +1,30 @@
-ToDoList =
-	controller: require 'controllers/to-do-list'
-	view: require 'views/to-do-list'
+pubSub = window.amplify
+
+appView = require 'views/app'
+
+modelClasses =
+	toDos: require 'models/to-dos'
 
 module.exports =
-	class AppController
-		constructor: (@commonArgs) ->
-			# order can matter for layout
-			firstComponents = []
-			# layout unaffected by ordering (e.g. flexbox, absolute positioning)
-			orderIndependentComponents = [
-				ToDoList
-			]
-			lastComponents = []
-			orderedComponents = firstComponents.concat orderIndependentComponents, lastComponents
-			@_components = orderedComponents
+	class App
+		constructor: (vnode) ->
+			# vnode.state currently undefined
 
-		components: =>
-			@_components
+		oninit: (vnode) =>
+			@_models = @_instantiateModels()
+
+		view: appView
+
+		data: =>
+			models: @_models
+			pubSub: pubSub
+
+		_instantiateModels: ->
+			# models are passed down to permit easy querying
+			# but receive "commands" only through action events, not method calls
+			models = {}
+			for type, Model of modelClasses
+				model = new Model {pubSub}
+				model.connectHandlers()
+				models[type] = model
+			models

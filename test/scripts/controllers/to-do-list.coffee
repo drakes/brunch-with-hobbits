@@ -13,7 +13,8 @@ describe 'ToDoListController', ->
 				index + 1 for item, index in mockItems
 
 	beforeEach ->
-		toDoListController = new ToDoListController models: mockModels, pubSub: mockPubSub
+		toDoListController = new ToDoListController
+		toDoListController.oninit attrs: data: {models: mockModels, pubSub: mockPubSub}
 
 	it 'provides item keys', ->
 		keys = toDoListController.itemKeys()
