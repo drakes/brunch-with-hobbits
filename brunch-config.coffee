@@ -95,6 +95,8 @@ exports.config =
 				[\\/] # path separator
 				///, '')
 	plugins:
+		babel:
+			presets: ['env']
 		postBrunch: postBrunchTasks
 		postcss:
 			processors: autoprefixer
