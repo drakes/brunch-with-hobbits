@@ -29,13 +29,21 @@ Brunch with Hobbits hooks up a bunch of useful tools and provides opinionated de
 Install dependencies:
 
 ```
-npm install
+npm install -g brunch
 ```
 
 ### Create a project with this skeleton
 
 ```
 brunch new [optional-output-dir] -s gh:drakes/brunch-with-hobbits
+```
+
+#### Optionally uninstall Brunch global
+
+The `brunch` global is only required to start a new project; from that point forward everything to build and use the project is installed locally in that project's directories. You may optionally uninstall global brunch afterward:
+
+```
+npm uninstall -g brunch
 ```
 
 ### Build, run tests, and launch a server
